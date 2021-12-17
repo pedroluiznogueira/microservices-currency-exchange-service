@@ -14,11 +14,13 @@ public class CircuitBreakerController {
     private Logger logger = LoggerFactory.getLogger(CircuitBreakerController.class);
 
     @GetMapping("/sample-api")
-    @Retry(name = "default")
+    @Retry(name = "sample-api")
     public String sampleApi() {
         logger.info("Sample Api call received");
-        ResponseEntity<String> forEntity =  new RestTemplate().getForEntity("http://localhost:8080/some-dummy",
-                String.class);
+        ResponseEntity<String> forEntity =  new RestTemplate()
+                .getForEntity(
+                    "http://localhost:8080/some-dummy",
+                        String.class);
         return forEntity.getBody();
     }
 }
