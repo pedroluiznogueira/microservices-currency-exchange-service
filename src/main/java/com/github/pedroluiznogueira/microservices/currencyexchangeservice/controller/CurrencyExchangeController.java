@@ -39,4 +39,9 @@ public class CurrencyExchangeController {
 
         return currencyExchange;
     }
+
+    @GetMapping("ok")
+    public String get() {
+        return "ok";
+    }
 }
