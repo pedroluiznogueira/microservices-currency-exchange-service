@@ -24,20 +24,30 @@ public class CurrencyExchangeController {
     private Environment environment;
 
     @GetMapping("currency-exchange/from/{from}/to/{to}")
-    public CurrencyExchange retrieveExchangeValue(@PathVariable ("from") String from, @PathVariable ("to") String to) {
+    public CurrencyExchange retrieveExchangeValue(
+            @PathVariable String from,
+            @PathVariable String to) {
+
         logger.info("retrieveExchangeValue called with {} to {}", from, to);
 
-        CurrencyExchange currencyExchange = currencyExchangeRepository
-                .findByFromAndTo(from, to);
-        if (currencyExchange == null) {
-            throw new RuntimeException("Unable to find data for " + from + " to " + to);
+        CurrencyExchange currencyExchange
+                = currencyExchangeRepository.findByFromAndTo(from, to);
+
+        if(currencyExchange ==null) {
+            throw new RuntimeException
+                    ("Unable to Find data for " + from + " to " + to);
         }
 
-        // extracting server port
         String port = environment.getProperty("local.server.port");
-        currencyExchange.setEnvironment(port);
+
+        //CHANGE-KUBERNETES
+        String host = environment.getProperty("HOSTNAME");
+        String version = "v11";
+
+        currencyExchange.setEnvironment(port + " " + version + " " + host);
 
         return currencyExchange;
+
     }
 
     @GetMapping("ok")
