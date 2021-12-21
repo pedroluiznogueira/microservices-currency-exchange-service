@@ -30,12 +30,12 @@ spec:
         app: currency-exchange
     spec:
       containers:
-      - image: pedroluiznogueira/ms-currency-exchange-service:0.0.11-SNAPSHOT
-        imagePullPolicy: IfNotPresent
-        name: ms-currency-exchange-service
-        resources: {}
-        terminationMessagePath: /dev/termination-log
-        terminationMessagePolicy: File
+        - image: pedroluiznogueira/ms-currency-exchange-service:0.0.11-SNAPSHOT
+          imagePullPolicy: IfNotPresent
+          name: ms-currency-exchange-service
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
@@ -44,18 +44,18 @@ spec:
 status:
   availableReplicas: 1
   conditions:
-  - lastTransitionTime: "2021-12-20T23:30:16Z"
-    lastUpdateTime: "2021-12-20T23:30:16Z"
-    message: Deployment has minimum availability.
-    reason: MinimumReplicasAvailable
-    status: "True"
-    type: Available
-  - lastTransitionTime: "2021-12-20T23:30:01Z"
-    lastUpdateTime: "2021-12-20T23:30:16Z"
-    message: ReplicaSet "currency-exchange-d77756d7c" has successfully progressed.
-    reason: NewReplicaSetAvailable
-    status: "True"
-    type: Progressing
+    - lastTransitionTime: "2021-12-20T23:30:16Z"
+      lastUpdateTime: "2021-12-20T23:30:16Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2021-12-20T23:30:01Z"
+      lastUpdateTime: "2021-12-20T23:30:16Z"
+      message: ReplicaSet "currency-exchange-d77756d7c" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
   observedGeneration: 1
   readyReplicas: 1
   replicas: 1
