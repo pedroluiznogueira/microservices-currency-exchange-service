@@ -23,7 +23,7 @@ spec:
         app: currency-exchange
     spec:
       containers:
-      - image: pedroluiznogueira/ms-currency-exchange-service:0.0.11-SNAPSHOT
+      - image: pedroluiznogueira/ms-currency-exchange-service:0.0.12-SNAPSHOT
         imagePullPolicy: IfNotPresent
         name: ms-currency-exchange-service
       restartPolicy: Always
